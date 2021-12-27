@@ -1,0 +1,4 @@
+{
+    "mongoURI" : "mongodb+srv://Admin:<password>@sarajevo.nyyt3.mongodb.net/SmartCollarDB?retryWrites=true&w=majority",
+    "jwtSecret" : "mySecretToken"
+}
