@@ -1,5 +1,7 @@
 const AnimalModel = require('./AnimalModel.js');
 
+
+//Get All
 const getAnimals = () =>
 {
     return new Promise((resolve, reject) =>
@@ -19,6 +21,8 @@ const getAnimals = () =>
 
 };
 
+
+//Get by ID
 const getAnimal = (id) =>
 {
     return new Promise((resolve, reject) =>
@@ -37,19 +41,70 @@ const getAnimal = (id) =>
     });
 };
 
-const updateAnimal = () =>
+
+//Update
+const updateAnimal = (id, obj) =>
 {
+    return new Promise((resolve, reject) =>
+    {
+        AnimalModel.findByIdAndUpdate(id, {
+            Type : obj.Type
+        }, function(error)
+        {
+            if(error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve("Animal Updated");
+            }
+        })
+    });
 
 };
 
-const addAnimal = () =>
-{
 
+//Add
+const addAnimal = (obj) =>
+{
+    return new Promise((resolve, reject) =>
+    {
+        let animal = new AnimalModel({
+            Type : obj.Type
+        })
+        animal.save(function(error)
+        {
+            if(error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve("Animal Added");
+            }
+        })
+    })
 };
 
-const deleteAnimal = () =>
-{
 
+//Delete
+const deleteAnimal = (id) =>
+{
+    return new Promise((resolve, reject) =>
+    {
+        AnimalModel.findByIdAndDelete(id, function(error)
+        {
+            if(error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve("Animal Deleted");
+            }
+        })
+    });
 };
 
 module.exports = {getAnimals, getAnimal, updateAnimal, addAnimal, deleteAnimal};
