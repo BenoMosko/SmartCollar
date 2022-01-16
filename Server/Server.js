@@ -9,7 +9,8 @@ connectDB();
 
 app.use(express.json({extended : false}));
 
-app.use('/api/animals', require('./Routers/API/AnimalRouter.js'))
+app.use('/api/animals', require('./Routers/API/AnimalRouter.js'));
+app.use('/api/bodyparts', require('./Routers/API/BodyPartsRouter.js'));
 
 app.get('/', (request, response) => response.send('API Running'));
 
